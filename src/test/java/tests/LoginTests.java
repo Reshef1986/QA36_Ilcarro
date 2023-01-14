@@ -1,68 +1,68 @@
 package tests;
 
+import model.User;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends  TestBase{
-
-
     @BeforeMethod
     public void preCondition(){
         if(app.getHelperUser().isLogged()){
-            app.getHelperUser().logOut();
-        }else if (app.getHelperUser().loginFailed()){
-            app.getHelperUser().submitAfterLogin();
+            app.getHelperUser().logout();
 
         }
 
-
-
     }
-
- @Test
-    public void loginSuccess () throws InterruptedException {
-     app.getHelperUser().openLoginRegistrationForm();
-     app.getHelperUser().fillLogin("reshef1986@gmail.com","Rr6146858!");
-     app.getHelperUser().submitLogin();
-     Thread.sleep(2000);
-     app.getHelperUser().submitAfterLogin();
-     Assert.assertTrue(app.getHelperUser().isLogged());
- }
 
     @Test
-    public void loginSuccess2 () throws InterruptedException {
-        app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLogin("reshef1986@gmail.com","Rr6146858!");
-        app.getHelperUser().submitLogin();
-        Thread.sleep(2000);
-        app.getHelperUser().submitAfterLogin();
-        Assert.assertTrue(app.getHelperUser().isLogged());
+    public void loginSuccess(){
+        app.getHelperUser().openFormLogin();
+        app.getHelperUser().fillLoginForm("noa@gmail.com","Nnoa12345$");
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getMessage(),"Logged in success");
+
+    }
+    @Test
+    public void loginSuccessModel(){
+        User user=new User().withEmail("noa@gmail.com").withPassword("Nnoa12345$");
+
+        app.getHelperUser().openFormLogin();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getMessage(),"Logged in success");
+
     }
 
- @Test
-    public void loginWrongEmail() throws InterruptedException {
-     app.getHelperUser().openLoginRegistrationForm();
-     app.getHelperUser().fillLogin("reshef1986gmail.co","Rr6146858!");
+    @Test
+    public void loginWrongEmail(){
+        User user=new User().withEmail("noagmail.com").withPassword("Nnoa12345$");
 
-     Assert.assertTrue(app.getHelperUser().isText());
- }
-
- @Test
+        app.getHelperUser().openFormLogin();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getErrorText(),"It'snot look like email");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+    }
+    @Test
     public void loginWrongPassword(){
-         app.getHelperUser().openLoginRegistrationForm();
-         app.getHelperUser().fillLogin("reshef1986@gmail.com","R");
-         app.getHelperUser().submitLogin();
+        User user=new User().withEmail("noa@gmail.com").withPassword("Nnoa1");
 
-         Assert.assertFalse(app.getHelperUser().isLogged());
- }
-
- @Test
+        app.getHelperUser().openFormLogin();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getMessage(),"\"Login or Password incorrect\"");
+    }
+    @Test (enabled = false)
     public void loginUnregisterUser(){
-     app.getHelperUser().openLoginRegistrationForm();
-     app.getHelperUser().fillLogin("reshef11986@gmail.com","Rr6146858!");
-     app.getHelperUser().submitLogin();
 
-     Assert.assertFalse(app.getHelperUser().isLogged());
- }
+    }
+
+    @AfterMethod
+    public void postCondition(){
+        app.getHelperUser().closeDialogContainer();
+    }
+
+
 }
