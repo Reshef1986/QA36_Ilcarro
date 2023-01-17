@@ -19,8 +19,8 @@ public class LoginTests extends TestBase {
     }
 
     @Test
-    public void loginSuccess() throws InterruptedException {
-        Thread.sleep(2000);
+    public void loginSuccess()  {
+
         app.getHelperUser().openFormLogin();
 
         app.getHelperUser().fillLoginForm("reshef1986@gmail.com", "Rr6146858!");
@@ -32,10 +32,10 @@ public class LoginTests extends TestBase {
     }
 
     @Test
-    public void loginSuccessModel() throws InterruptedException {
+    public void loginSuccessModel()  {
 
         User user = new User().withEmail("reshef1986@gmail.com").withPassword("Rr6146858!");
-Thread.sleep(2000);
+
         app.getHelperUser().openFormLogin();
 
         app.getHelperUser().fillLoginForm(user);
@@ -75,10 +75,10 @@ Thread.sleep(2000);
 
     @AfterMethod
 
-    public void postCondition() throws InterruptedException {
-Thread.sleep(2000);
+    public void postCondition()  {
+app.getHelperUser().pause(2000);
         app.getHelperUser().closeDialogContainer();
-        Thread.sleep(2000);
+
     }
 
 

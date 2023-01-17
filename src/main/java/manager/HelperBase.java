@@ -21,6 +21,13 @@ public class HelperBase {
         }
 
     }
+    public void pause(int time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void click(By locator){
         wd.findElement(locator).click();
