@@ -19,25 +19,29 @@ public class LoginTests extends TestBase {
     }
 
     @Test
-    public void loginSuccess()  {
-
+    public void loginSuccess() throws InterruptedException {
+        Thread.sleep(2000);
         app.getHelperUser().openFormLogin();
+
         app.getHelperUser().fillLoginForm("reshef1986@gmail.com", "Rr6146858!");
         app.getHelperUser().submit();
+
+        System.out.println(app.getHelperUser().getMessage());
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
 
     }
 
     @Test
-    public void loginSuccessModel() {
+    public void loginSuccessModel() throws InterruptedException {
 
         User user = new User().withEmail("reshef1986@gmail.com").withPassword("Rr6146858!");
-
+Thread.sleep(2000);
         app.getHelperUser().openFormLogin();
 
         app.getHelperUser().fillLoginForm(user);
         app.getHelperUser().submit();
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+        System.out.println(app.getHelperUser().getMessage());
+       Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         
     }
 
@@ -49,7 +53,8 @@ public class LoginTests extends TestBase {
         app.getHelperUser().openFormLogin();
         app.getHelperUser().fillLoginForm(user);
         app.getHelperUser().submit();
-        Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
+        System.out.println(app.getHelperUser().getErrorText());
+        Assert.assertEquals(app.getHelperUser().getErrorText(),"It'snot look like email");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
     }
 
@@ -59,7 +64,8 @@ public class LoginTests extends TestBase {
         app.getHelperUser().openFormLogin();
         app.getHelperUser().fillLoginForm(user);
         app.getHelperUser().submit();
-        Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
+        System.out.println(app.getHelperUser().getMessage());
+        Assert.assertEquals(app.getHelperUser().getMessage(),"\"Login or Password incorrect\"");
     }
 
     @Test(enabled = false)
@@ -69,10 +75,10 @@ public class LoginTests extends TestBase {
 
     @AfterMethod
 
-    public void postCondition() {
-
+    public void postCondition() throws InterruptedException {
+Thread.sleep(2000);
         app.getHelperUser().closeDialogContainer();
-
+        Thread.sleep(2000);
     }
 
 

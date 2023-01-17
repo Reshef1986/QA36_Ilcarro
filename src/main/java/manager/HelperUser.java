@@ -14,17 +14,20 @@ public class HelperUser extends HelperBase {
     }
 
 
-    public void openFormLogin() {
-        click(By.xpath("//a[text()=' Log in ']"));
+    public void openFormLogin()  {
+
+        click(By.cssSelector("[ng-reflect-router-link='login']"));
     }
 
     public void fillLoginForm(String email, String password) {
-        type(By.id("email"),email);
-        type(By.id("password"),password);
-    }
+       type(By.cssSelector("[type='email']"),email);
+       type(By.cssSelector("[type='password']"),password);
+
+   }
     public void fillLoginForm(User user) {
-        type(By.id("email"), user.getEmail());
-        type(By.id("password"),user.getPassword());
+        type(By.cssSelector("[type='email']"), user.getEmail());
+        type(By.cssSelector("[type='password']"), user.getPassword());
+
     }
 
     public void submit() {
@@ -49,7 +52,7 @@ public class HelperUser extends HelperBase {
 
     public boolean isLogged() {
         //return isElementPresent(By.xpath("//button[text()=' Logout ']"));
-        return isElementPresent(By.cssSelector("div.header a:nth-child(5)"));
+        return isElementPresent(By.xpath("(//a[normalize-space()='Logout'])[1]"));
     }
 
     public void logout() {
