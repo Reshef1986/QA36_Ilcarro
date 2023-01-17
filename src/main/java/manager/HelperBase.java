@@ -30,4 +30,9 @@ public class HelperBase {
         return wd.findElements(locator).size()>0;
     }
 
+    public  String getElementText( By locator){
+        return wd.findElement(locator).getText();
+
+    }
+
 }
