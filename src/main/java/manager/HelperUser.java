@@ -1,9 +1,7 @@
 package manager;
 
 import model.User;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -30,11 +28,7 @@ public class HelperUser extends HelperBase {
 
     }
 
-    public void submit() {
-        click(By.xpath("//button[text()='Y’alla!']"));
-        // click(By.xpath("//button[@type='submit']"));
 
-    }
     public String erorText (){
         getElementText(By.cssSelector(".error"));
         return  getElementText(By.cssSelector(".error"));
@@ -78,8 +72,12 @@ wd.navigate().refresh();
     public void openRegistrationForm() {
         click(By.cssSelector("[href^='/registration']"));
     }
+    public  void openLetTheCarWorkForm(){
+        click(By.id("1"));
+    }
 
     public void fillRegistrationForm(User user) {
+        pause(3000);
         type(By.cssSelector("[formcontrolname='firstName']"),user.getName());
         type(By.cssSelector("[formcontrolname='lastName']"),user.getLastName());
         type(By.cssSelector("[formcontrolname='email']"),user.getEmail());
@@ -89,13 +87,49 @@ wd.navigate().refresh();
     }
 
     public void checkPolicy() {
-       WebElement e= wd.findElement(By.cssSelector("#terms-of-use"));
+        if(!wd.findElement(By.id("terms-of-use")).isSelected()) {
+            click(By.cssSelector(".checkbox-container"));
+        }
+
+        WebElement e= wd.findElement(By.cssSelector("#terms-of-use"));
+         /*
         int x = wd.findElement(By.cssSelector("#terms-of-use")).getLocation().getX();
         int y = wd.findElement(By.cssSelector("#terms-of-use")).getLocation().getY();
+
         System.out.println(x);
         System.out.println(y);
-        Actions cliiick = new Actions(wd);
-        cliiick.moveToElement(e,20,10).click().build().perform();
+        */
+        Actions checkPolicy = new Actions(wd);
+        pause(500);
+        checkPolicy.moveToElement(e,20,10).click().release().perform();
+        pause(500);
 
+    }
+    public void checkPolicyXY(){
+
+        Dimension size = wd.manage().window().getSize();
+        System.out.println("Window Height "+ size.getHeight());
+        System.out.println("Window Width "+ size.getWidth());
+
+        WebElement label =wd.findElement(By.cssSelector("label[for='terms-of-use']"));
+
+        Rectangle rect = label.getRect();
+        int xOffset = rect.getWidth()/2;
+
+        Actions actions = new Actions(wd);
+        pause(1000);
+        actions.moveToElement(label,-xOffset,0).click().release().perform();
+
+    }
+    public void checkPolicyJS(){
+        JavascriptExecutor js=(JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').checked=true;");
+    }
+
+    public void login(User user) {
+        openFormLogin();
+        fillLoginForm(user);
+        submit();
+        closeDialogContainer();
     }
 }

@@ -41,5 +41,10 @@ public class HelperBase {
         return wd.findElement(locator).getText();
 
     }
+    public void submit() {
+        //click(By.xpath("//button[text()='Y’alla!']"));
+        pause(2000);
+        click(By.xpath("//button[@type='submit']"));
 
+    }
 }

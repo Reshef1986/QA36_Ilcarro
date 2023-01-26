@@ -12,6 +12,7 @@ public class LoginTests extends TestBase {
     public void preCondition() {
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
+            logger.info("Мне требовалась сделать выход");
 
         }
 
@@ -20,7 +21,7 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginSuccess()  {
-
+logger.info("Лигин с допустиммыми данными : reshef1986@gmail.com - Rr6146858!");
         app.getHelperUser().openFormLogin();
 
         app.getHelperUser().fillLoginForm("reshef1986@gmail.com", "Rr6146858!");
@@ -28,12 +29,12 @@ public class LoginTests extends TestBase {
 
         System.out.println(app.getHelperUser().getMessage());
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-
+logger.info("Tests success");
     }
 
     @Test
     public void loginSuccessModel()  {
-
+        logger.info("Лигин с допустиммыми данными : reshef1986@gmail.com - Rr6146858!");
         User user = new User().withEmail("reshef1986@gmail.com").withPassword("Rr6146858!");
 
         app.getHelperUser().openFormLogin();
@@ -42,12 +43,12 @@ public class LoginTests extends TestBase {
         app.getHelperUser().submit();
         System.out.println(app.getHelperUser().getMessage());
        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-        
+        logger.info("Tests success");
     }
 
     @Test
     public void loginWrongEmail() {
-
+        logger.info("Лигин с недопустиммым имелом : reshef1986gmail.com - Rr6146858!");
         User user = new User().withEmail("reshef1986gmail.com").withPassword("Rr6146858!");
 
         app.getHelperUser().openFormLogin();
@@ -56,10 +57,12 @@ public class LoginTests extends TestBase {
         System.out.println(app.getHelperUser().getErrorText());
         Assert.assertEquals(app.getHelperUser().getErrorText(),"It'snot look like email");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+        logger.info("Tests success");
     }
 
     @Test
     public void loginWrongPassword() {
+        logger.info("Лигин с недопустиммым маленьким паролем  : reshef1986gmail.com - R");
         User user = new User().withEmail("reshef1986@gmail.com").withPassword("R");
         app.getHelperUser().openFormLogin();
         app.getHelperUser().fillLoginForm(user);

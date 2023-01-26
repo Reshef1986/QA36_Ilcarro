@@ -2,19 +2,26 @@ package manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 public class ApplicationManager {
     WebDriver wd;
     HelperUser helperUser;
-
+    HelperCar helperCar;
+Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
     public void init() {
         wd = new ChromeDriver();
+        logger.info("'_______________________________________________________________________________________________________________________________________________'");
+        logger.info("Все тесты запущены  в Хром браузере");
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wd.navigate().to("https://ilcarro.web.app");
+        logger.info("Тесты запущенны по адрессу -> " +wd.getCurrentUrl());
         helperUser= new HelperUser(wd);
+        helperCar=new HelperCar(wd);
 
     }
 
@@ -24,5 +31,9 @@ public class ApplicationManager {
 
     public HelperUser getHelperUser() {
         return helperUser;
+    }
+
+    public HelperCar getHelperCar() {
+        return helperCar;
     }
 }

@@ -1,0 +1,65 @@
+17:27:54.043  INFO  manager.ApplicationManager - Все тесты запущены  в Хром браузере
+17:27:57.353  INFO  manager.ApplicationManager - Тесты запущенны по адрессу -> https://ilcarro.web.app/search
+17:27:57.394  INFO  tests.TestBase - The name of starts metod is  ->>>loginSuccess
+17:28:02.426  INFO  tests.TestBase - Лигин с допустиммыми данными : reshef1986@gmail.com - Rr6146858!
+17:28:07.530  INFO  tests.TestBase - Tests success
+17:37:51.655  INFO  manager.ApplicationManager - Все тесты запущены  в Хром браузере
+17:37:53.126  INFO  manager.ApplicationManager - Тесты запущенны по адрессу -> https://ilcarro.web.app/search
+17:37:53.152  INFO  tests.TestBase - The name of starts metod is  ->>>addNewCarSuccess
+17:38:01.647  INFO  tests.TestBase - .location("Haifa, Israel")
+                .manufacture("BMW")
+                .model("M5")
+                .year("2020")
+                .fuel("Petrol")
+                .seats("4")
+                .clasS("C")
+                .carRegNumber("555-00-"+i)
+                .price("65")
+                .about("very nice car")
+                .build();
+
+17:38:04.562  INFO  tests.TestBase - Картинка добавленна
+17:38:07.160  INFO  tests.TestBase - Tests success
+17:43:16.864  INFO  manager.ApplicationManager - Все тесты запущены  в Хром браузере
+17:43:18.163  INFO  manager.ApplicationManager - Тесты запущенны по адрессу -> https://ilcarro.web.app/search
+17:43:18.191  INFO  tests.TestBase - The name of starts metod is  ->>>addNewCarSuccess
+17:43:26.627  INFO  tests.TestBase - Тесты запущенны в профели  ->>> reshef1986@gmail.com - Rr6146858!
+17:43:26.635  INFO  tests.TestBase - Машина создалась с такимми данными .location("Haifa, Israel")
+                .manufacture("BMW")
+                .model("M5")
+                .year("2020")
+                .fuel("Petrol")
+                .seats("4")
+                .clasS("C")
+                .carRegNumber("555-00-"+i)
+                .price("65")
+                .about("very nice car")
+                .build();
+
+17:43:29.543  INFO  tests.TestBase - Картинка добавленна
+17:44:37.619  INFO  manager.ApplicationManager - Все тесты запущены  в Хром браузере
+17:44:38.882  INFO  manager.ApplicationManager - Тесты запущенны по адрессу -> https://ilcarro.web.app/search
+17:44:38.912  INFO  tests.TestBase - The name of starts metod is  ->>>addNewCarSuccess
+17:44:47.339  INFO  tests.TestBase - Тесты запущенны в профели  ->>> reshef1986@gmail.com - Rr6146858!
+17:44:47.346  INFO  tests.TestBase - Машина создалась с такимми данными .location("Haifa, Israel")
+                .manufacture("BMW")
+                .model("M5")
+                .year("2020")
+                .fuel("Petrol")
+                .seats("4")
+                .clasS("C")
+                .carRegNumber("555-00-"+i)
+                .price("65")
+                .about("very nice car")
+                .build();
+
+17:44:50.206  INFO  tests.TestBase - Картинка добавленна
+17:44:52.812  INFO  tests.TestBase - Tests success
+17:49:43.939  INFO  manager.ApplicationManager - '_______________________________________________________________________________________________________________________________________________'
+17:49:43.942  INFO  manager.ApplicationManager - Все тесты запущены  в Хром браузере
+17:49:45.510  INFO  manager.ApplicationManager - Тесты запущенны по адрессу -> https://ilcarro.web.app/search
+17:49:45.547  INFO  tests.TestBase - The name of starts metod is  ->>>addNewCarSuccess
+17:49:54.096  INFO  tests.TestBase - Тесты запущенны в профели  ->>> reshef1986@gmail.com - Rr6146858!
+17:49:54.142  INFO  tests.TestBase - Машина создалась с такимми данными Car(location=Haifa, Israel, manufacture=BMW, model=M5, year=2020, fuel=Petrol, seats=4, clasS=C, carRegNumber=555-00-1749, price=65, about=very nice car)
+17:49:57.049  INFO  tests.TestBase - Картинка добавленна
+17:49:59.663  INFO  tests.TestBase - Tests success
