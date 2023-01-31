@@ -2,6 +2,8 @@ package manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +18,10 @@ Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
         wd = new ChromeDriver();
         logger.info("'_______________________________________________________________________________________________________________________________________________'");
         logger.info("Все тесты запущены  в Хром браузере");
+
+        WebDriverListener listener =new ListenerWD();
+        wd=new EventFiringDecorator<>(listener).decorate(wd);
+
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wd.navigate().to("https://ilcarro.web.app");

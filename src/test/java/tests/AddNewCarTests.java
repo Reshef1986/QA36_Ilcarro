@@ -1,14 +1,16 @@
 
 package tests;
 
+import manager.ListenerTNG;
 import model.Car;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Random;
-
+@Listeners(ListenerTNG.class)
 public class AddNewCarTests extends TestBase{
     @BeforeMethod
     public void preCondition(){

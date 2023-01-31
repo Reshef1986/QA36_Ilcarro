@@ -7,9 +7,9 @@
             <pattern>%d{HH:mm:ss.SSS}  %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-
+    <timestamp key="bySecond" datePattern="yyyy-MM-dd' QA 'HH-mm-ss"/>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>testFile.log</file>
+        <file>Logs/log-${bySecond}.log</file>
         <append>true</append>
         <!-- set immediateFlush to false for much higher logging throughput -->
         <immediateFlush>true</immediateFlush>
